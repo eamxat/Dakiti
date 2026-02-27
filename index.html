@@ -749,23 +749,47 @@
                 display: block !important;
             }
 
-            .kuromi-btn, #tab-saoko .btn-click-me {
+            /* IGUALAR EFECTO BOTÓN KUROMI AL BOTÓN CLICK ME EN MÓVIL */
+            .kuromi-btn {
                 pointer-events: auto !important;
                 z-index: 50 !important;
                 position: relative !important;
+                
+                /* Copia exacta de las propiedades de .btn-click-me */
+                background: rgba(138, 59, 99, 0.3) !important;
+                border: 1px solid var(--accent-bright) !important;
+                color: var(--text-dark) !important;
+                border-radius: 50px !important;
+                padding: 0.3rem 1rem !important;
+                font-weight: 700 !important;
+                font-size: 0.8rem !important;
+                cursor: pointer !important;
+                transition: var(--transition-smooth) !important;
+                font-family: inherit !important;
+                text-transform: uppercase !important;
+                -webkit-tap-highlight-color: transparent !important;
+            }
+
+            .kuromi-btn:hover,
+            .kuromi-btn:active {
+                background: var(--text-dark) !important;
+                color: #000000 !important;
+                box-shadow: var(--shadow-sm) !important;
+                transform: scale(0.95) !important; /* Mismo efecto táctil activo */
+            }
+
+            /* Igualar también el botón original Click Me en móvil para consistencia táctil */
+            #btn-click-me:active {
+                transform: scale(0.95) !important;
             }
 
             /* GIF SAOKO FIX iOS */
-            #tab-saoko img {
+            .saoko-gif {
                 will-change: auto !important;
                 transform: translateZ(0) !important;
                 -webkit-transform: translateZ(0) !important;
                 backface-visibility: hidden !important;
                 -webkit-backface-visibility: hidden !important;
-                image-rendering: auto !important;
-                width: 100% !important;
-                max-width: 250px !important;
-                height: auto !important;
             }
 
             /* Excepción Galería: Mantener scroll horizontal */
@@ -996,7 +1020,7 @@
                     <button class="btn-click-me kuromi-btn">Kuromi</button>
                 </div>
 
-                <img src="saoko-imagen.gif" alt="Saoko Image" style="max-width: 80%; width: 100px; height: auto; object-fit: contain; border-radius: 16px; flex-shrink: 0;">
+                <img src="saoko-imagen.gif" alt="Saoko Image" class="saoko-gif" style="max-width: 80%; width: 100px; height: auto; object-fit: contain; border-radius: 16px; flex-shrink: 0;">
             </div>
         </div>
 
@@ -1357,8 +1381,6 @@
     </script>
 </body>
 </html>
-
-
 
 
 
