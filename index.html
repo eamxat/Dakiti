@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gomi Xatspace</title>
+    <title>Dakiti Xatspace</title>
     <style>
         /* =========================================
            1. FUENTES Y VARIABLES DEL SISTEMA 
@@ -350,14 +350,25 @@
 
         .hero-visuals { display: flex; justify-content: center; align-items: center; height: 100%; width: 100%; }
 
+        /* AJUSTE PARA EL VIDEO DEL INICIO (Reducción sutil + control de altura máxima) */
         .v-main { 
-            width: clamp(350px, 45vw, 750px); height: auto; border-radius: 32px;
+            width: clamp(280px, 38vw, 550px); /* Tamaño ajustado para evitar que empuje elementos */
+            height: auto; 
+            max-height: 48vh; /* Altura máxima estricta para garantizar que el footer y reloj respiren */
+            border-radius: 32px;
             box-shadow: var(--shadow-lg); transition: var(--transition-smooth);
-            display: block; overflow: hidden;
+            display: flex; overflow: hidden; justify-content: center; align-items: center;
         }
         .v-main:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
 
-        .v-main video { width: 100%; height: auto; display: block; border-radius: 32px; }
+        .v-main video { 
+            width: 100%; 
+            height: 100%; 
+            max-height: 48vh; /* Protección de altura extra */
+            object-fit: cover; /* Garantiza que las proporciones se mantengan intactas sin deformar */
+            display: block; 
+            border-radius: 32px; 
+        }
 
         .footer-signature {
             position: absolute;
@@ -615,7 +626,9 @@
             .hero-content { align-items: center; }
             .gemini-block { align-items: center; } 
             .hero-title-wrapper { align-items: center; }
-            .hero-visuals { width: 100%; max-width: 600px; height: auto; min-height: 20vh;}
+            
+            /* Ajuste proporcionado también para tablet/móvil para evitar desbordes */
+            .hero-visuals { width: 100%; max-width: 500px; height: auto; min-height: 20vh; margin: 0 auto;}
             
             .music-layout, .network-layout { height: auto; min-height: 100%; justify-content: flex-start; padding-bottom: 2rem; }
             .music-content { flex-direction: column; justify-content: center; gap: 1.5rem; }
@@ -716,7 +729,7 @@
 
                 </div>
 
-                <div class="hero-visuals" style="flex-direction: column; gap: 1.5rem;">
+                <div class="hero-visuals" style="flex-direction: column; gap: clamp(0.8rem, 2vh, 1.5rem);">
                     <div class="v-main js-parallax" data-depth="0.05">
                         <video src="https://i.imgur.com/7WNbQCv.mp4" autoplay loop muted playsinline></video>
                     </div>
@@ -830,6 +843,12 @@
                     </div>
                     <div class="photo-card">
                         <img src="galeria-foto-5.jpg" alt="Gallery Photo 5">
+                    </div>
+                    <div class="photo-card">
+                        <img src="galeria-foto-6.jpg" alt="Gallery Photo 6">
+                    </div>
+                    <div class="photo-card">
+                        <img src="galeria-foto-7.jpg" alt="Gallery Photo 7">
                     </div>
                 </div>
                 
