@@ -741,6 +741,20 @@
                 object-fit: contain !important;
             }
 
+            /* AJUSTE ÚNICO — SEGUNDO VIDEO SECCIÓN MUSIC */
+            .v-music.pos-br {
+                overflow: hidden !important;
+                border-radius: 16px !important;
+            }
+            
+            .v-music.pos-br video {
+                width: 100% !important;
+                height: auto !important;
+                max-width: 100% !important;
+                object-fit: contain !important;
+                display: block !important;
+            }
+
             /* EXCLUSIVO MÓVIL: EMBED XAT Y BOTÓN KUROMI */
             iframe[src*="xat.com"] {
                 width: 100% !important;
@@ -1012,11 +1026,10 @@
 
         <div class="tab-content" id="tab-saoko" style="align-items: flex-start;">
             <div class="network-layout" style="justify-content: flex-start; height: auto; min-height: 100%; padding-top: 5vh; padding-bottom: 8vh;">
-                <!-- RESTAURADO EMBED ORIGINAL DE ESCRITORIO -->
+                
                 <iframe src="https://xat.com/embed/chat.php#id=220531447&gn=Saoko" allow="clipboard-write" style="width: 70%; max-width: 550px; aspect-ratio: 1 / 1; border-radius: 16px; box-shadow: var(--shadow-sm); border: none;" frameborder="0" scrolling="no"></iframe><br><small><a target="_BLANK" href="https://xat.com/web_gear/chat/embed.php?id=220531447&GroupName=Saoko"><a target="_BLANK" href="https://xat.com/Saoko"></a></small><br>
 
                 <div style="margin-top: 0.2rem; margin-bottom: 0.5rem;">
-                    <!-- Mantiene clase kuromi-btn para targeting solo en movil -->
                     <button class="btn-click-me kuromi-btn">Kuromi</button>
                 </div>
 
