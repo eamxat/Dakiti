@@ -636,55 +636,57 @@
             .network-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
         }
 
-        @media (max-width: 600px) {
-            .navbar { width: 95%; border-radius: 20px; flex-wrap: wrap; justify-content: center; padding: 0.5rem; top: calc(0.5rem + 65px); }
-            .nav-link { font-size: 0.7rem; padding: 0.4rem 0.6rem; }
-            .main-glass-panel { 
-                width: 95vw; 
-                height: calc(100dvh - 160px); 
-                margin-top: 1rem; 
-                padding: 0.5rem; 
-            }
-            .tab-content { padding: 1rem; }
-        }
-
         /* =========================================
-           14. FIXES MÓVILES EXCLUSIVOS (iOS Safari)
+           14. FIXES MÓVILES EXCLUSIVOS (iOS Safari & Scroll)
+           NO SE HA TOCADO EL DESKTOP, SÓLO MÓVIL (768px)
            ========================================= */
         @media (max-width: 768px) {
+            /* 1️⃣ Restaurar scroll global en móvil */
             html, body {
+                height: auto !important;
+                min-height: 100%;
+                overflow-y: auto !important;
                 overflow-x: hidden !important;
+                position: relative !important;
             }
 
-            /* Contenedores generales */
-            .main-glass-panel, .tab-content, .hero-layout, .music-layout, .network-layout {
+            * {
+                max-height: none !important;
+            }
+
+            /* Proteger fondos absolutos para que no se arruinen con el scroll */
+            #bg-video, #particles-canvas, #cursor-canvas, .ambient-background, .clouds-container, .navbar, #intro-screen, .zoom-modal {
+                max-height: 100vh !important;
+            }
+
+            .navbar { width: 95%; border-radius: 20px; flex-wrap: wrap; justify-content: center; padding: 0.5rem; top: calc(0.5rem + 65px); }
+            .nav-link { font-size: 0.7rem; padding: 0.4rem 0.6rem; }
+            
+            /* 2️⃣ Eliminar bloqueos de altura y 3️⃣ Contenedores principales */
+            .main-glass-panel, .tab-content, .hero-layout, .music-layout, .network-layout, .tab-content.active {
                 width: 100% !important;
                 max-width: 100% !important;
+                height: auto !important;
+                min-height: auto !important;
                 overflow: visible !important;
+                position: relative !important;
             }
 
-            /* Eliminar alturas fijas problemáticas en iOS */
             .main-glass-panel {
-                height: auto !important;
-                min-height: 80dvh !important;
                 padding-left: 16px !important;
                 padding-right: 16px !important;
                 padding-bottom: 20px !important;
                 margin-top: 80px !important;
                 margin-bottom: 40px !important;
             }
-
-            .tab-content {
-                height: auto !important;
-                min-height: 100% !important;
-                padding-left: 16px !important;
-                padding-right: 16px !important;
+            
+            .tab-content { 
+                padding: 1rem !important; 
                 padding-bottom: 60px !important;
             }
 
-            /* Solución al corte de contenido: permitir que el tab activo empuje el alto */
+            /* Solución al corte de contenido: permitir que el tab activo empuje el alto sin absolute 100% */
             .tab-content.active {
-                position: relative !important;
                 display: flex !important;
             }
 
@@ -692,7 +694,7 @@
                 display: none !important;
             }
 
-            /* Layout a columnas */
+            /* 4️⃣ Asegurar flujo vertical */
             .hero-layout, .network-grid, .music-content {
                 display: flex !important;
                 flex-direction: column !important;
@@ -726,7 +728,6 @@
                 width: 100% !important;
                 max-width: 100% !important;
                 height: auto !important;
-                max-height: none !important;
                 position: relative !important;
                 top: auto !important;
                 bottom: auto !important;
@@ -738,7 +739,6 @@
                 width: 100% !important;
                 height: auto !important;
                 object-fit: contain !important;
-                max-height: none !important;
             }
 
             /* GIF SAOKO FIX iOS */
@@ -1345,6 +1345,7 @@
     </script>
 </body>
 </html>
+
 
 
 
