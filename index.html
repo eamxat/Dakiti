@@ -741,37 +741,31 @@
                 object-fit: contain !important;
             }
 
-            /* GIF SAOKO FIX iOS */
-            #tab-saoko img {
-                will-change: transform !important;
-                transform: translateZ(0) !important;
-                -webkit-transform: translateZ(0) !important;
-                image-rendering: auto !important;
-                width: 100% !important;
-                max-width: 250px !important;
-                height: auto !important;
-            }
-
             /* EXCLUSIVO MÓVIL: EMBED XAT Y BOTÓN KUROMI */
-            .xat-responsive {
-                width: 100%;
-                overflow: hidden;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .xat-responsive iframe {
+            iframe[src*="xat.com"] {
                 width: 100% !important;
+                max-width: 100% !important;
                 height: 500px !important; /* Mismo alto que desktop si aplica */
-                border: none !important;
                 display: block !important;
             }
 
             .kuromi-btn, #tab-saoko .btn-click-me {
                 pointer-events: auto !important;
-                z-index: 10 !important;
+                z-index: 50 !important;
                 position: relative !important;
+            }
+
+            /* GIF SAOKO FIX iOS */
+            #tab-saoko img {
+                will-change: auto !important;
+                transform: translateZ(0) !important;
+                -webkit-transform: translateZ(0) !important;
+                backface-visibility: hidden !important;
+                -webkit-backface-visibility: hidden !important;
+                image-rendering: auto !important;
+                width: 100% !important;
+                max-width: 250px !important;
+                height: auto !important;
             }
 
             /* Excepción Galería: Mantener scroll horizontal */
@@ -994,13 +988,11 @@
 
         <div class="tab-content" id="tab-saoko" style="align-items: flex-start;">
             <div class="network-layout" style="justify-content: flex-start; height: auto; min-height: 100%; padding-top: 5vh; padding-bottom: 8vh;">
-                <!-- NUEVO: Wrap responsivo para iframe -->
-                <div class="xat-responsive">
-                    <iframe src="https://xat.com/embed/chat.php#id=220531447&gn=Saoko" allow="clipboard-write" style="width: 70%; max-width: 550px; aspect-ratio: 1 / 1; border-radius: 16px; box-shadow: var(--shadow-sm); border: none;" frameborder="0" scrolling="no"></iframe><br><small><a target="_BLANK" href="https://xat.com/web_gear/chat/embed.php?id=220531447&GroupName=Saoko"><a target="_BLANK" href="https://xat.com/Saoko"></a></small><br>
-                </div>
+                <!-- RESTAURADO EMBED ORIGINAL DE ESCRITORIO -->
+                <iframe src="https://xat.com/embed/chat.php#id=220531447&gn=Saoko" allow="clipboard-write" style="width: 70%; max-width: 550px; aspect-ratio: 1 / 1; border-radius: 16px; box-shadow: var(--shadow-sm); border: none;" frameborder="0" scrolling="no"></iframe><br><small><a target="_BLANK" href="https://xat.com/web_gear/chat/embed.php?id=220531447&GroupName=Saoko"><a target="_BLANK" href="https://xat.com/Saoko"></a></small><br>
 
                 <div style="margin-top: 0.2rem; margin-bottom: 0.5rem;">
-                    <!-- NUEVO: Clase kuromi-btn agregada al botón para targeting en móvil -->
+                    <!-- Mantiene clase kuromi-btn para targeting solo en movil -->
                     <button class="btn-click-me kuromi-btn">Kuromi</button>
                 </div>
 
