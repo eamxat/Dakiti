@@ -752,10 +752,26 @@
                 height: auto !important;
             }
 
-            #tab-saoko iframe {
+            /* EXCLUSIVO MÓVIL: EMBED XAT Y BOTÓN KUROMI */
+            .xat-responsive {
+                width: 100%;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .xat-responsive iframe {
                 width: 100% !important;
-                max-width: 100% !important;
-                height: 350px !important;
+                height: 500px !important; /* Mismo alto que desktop si aplica */
+                border: none !important;
+                display: block !important;
+            }
+
+            .kuromi-btn, #tab-saoko .btn-click-me {
+                pointer-events: auto !important;
+                z-index: 10 !important;
+                position: relative !important;
             }
 
             /* Excepción Galería: Mantener scroll horizontal */
@@ -900,7 +916,7 @@
             <div class="network-layout">
                 <div class="section-header">
                      
-<img src="amigos-avatar-principal.png" 
+<img src="amigos-avatar-principal.webp" 
      alt="Avatar" 
      class="friend-avatar"
      style="width:50px; height:auto; border: none; box-shadow: none;">
@@ -978,10 +994,14 @@
 
         <div class="tab-content" id="tab-saoko" style="align-items: flex-start;">
             <div class="network-layout" style="justify-content: flex-start; height: auto; min-height: 100%; padding-top: 5vh; padding-bottom: 8vh;">
-                <iframe src="https://xat.com/embed/chat.php#id=220531447&gn=Saoko" allow="clipboard-write" style="width: 70%; max-width: 550px; aspect-ratio: 1 / 1; border-radius: 16px; box-shadow: var(--shadow-sm); border: none;" frameborder="0" scrolling="no"></iframe><br><small><a target="_BLANK" href="https://xat.com/web_gear/chat/embed.php?id=220531447&GroupName=Saoko"><a target="_BLANK" href="https://xat.com/Saoko"></a></small><br>
-                
+                <!-- NUEVO: Wrap responsivo para iframe -->
+                <div class="xat-responsive">
+                    <iframe src="https://xat.com/embed/chat.php#id=220531447&gn=Saoko" allow="clipboard-write" style="width: 70%; max-width: 550px; aspect-ratio: 1 / 1; border-radius: 16px; box-shadow: var(--shadow-sm); border: none;" frameborder="0" scrolling="no"></iframe><br><small><a target="_BLANK" href="https://xat.com/web_gear/chat/embed.php?id=220531447&GroupName=Saoko"><a target="_BLANK" href="https://xat.com/Saoko"></a></small><br>
+                </div>
+
                 <div style="margin-top: 0.2rem; margin-bottom: 0.5rem;">
-                    <button class="btn-click-me">Kuromi</button>
+                    <!-- NUEVO: Clase kuromi-btn agregada al botón para targeting en móvil -->
+                    <button class="btn-click-me kuromi-btn">Kuromi</button>
                 </div>
 
                 <img src="saoko-imagen.webp" alt="Saoko Image" style="max-width: 80%; width: 100px; height: auto; object-fit: contain; border-radius: 16px; flex-shrink: 0;">
